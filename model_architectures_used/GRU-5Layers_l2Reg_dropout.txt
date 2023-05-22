@@ -1,0 +1,35 @@
+# ! pip install tensorflow
+
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import GRU
+from keras.layers import Dropout
+from keras.regularizers import l2
+
+model = Sequential()
+
+# Adding the first GRU layer and some Dropout regularisation
+model.add(GRU(units = 50, return_sequences = True, input_shape = (time_step, 1),  kernel_regularizer=l2(0.01)))
+model.add(Dropout(0.2))
+
+# Adding a second GRU layer and some Dropout regularisation
+model.add(GRU(units = 50, return_sequences = True, kernel_regularizer=l2(0.01)))
+model.add(Dropout(0.2))
+
+# # Adding a third GRU layer and some Dropout regularisation
+model.add(GRU(units = 50, return_sequences = True, kernel_regularizer=l2(0.01)))
+model.add(Dropout(0.2))
+
+# # Adding a fourth GRU layer and some Dropout regularisation
+model.add(GRU(units = 50, return_sequences = True, kernel_regularizer=l2(0.01)))
+model.add(Dropout(0.2))
+
+# Adding a fifth GRU layer and some Dropout regularisation
+model.add(GRU(units = 50, kernel_regularizer=l2(0.01)))
+model.add(Dropout(0.2))
+
+# Adding the output layer
+model.add(Dense(units = 1))
+
+# Compiling the RNN
+model.compile(optimizer = 'adam', loss = 'mean_squared_error')

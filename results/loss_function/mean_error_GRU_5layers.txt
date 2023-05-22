@@ -1,0 +1,3 @@
+math.sqrt(mean_squared_error(y_train,train_predict))
+9567.613506193971
+
